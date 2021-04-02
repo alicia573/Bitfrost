@@ -2,9 +2,9 @@ html{
     margin:auto;
 }
 body{
-    text-align: center;
     width: 80%;
-    margin: auto;    background-color: #95e0a0;
+    margin: auto;
+    background-color: #95e0a0;
 
 }
 #banner{
@@ -22,4 +22,17 @@ form{
 }
 #wrapper{
     background-color: white;
+    text-align: center;
+}
+#buttonKlant,#buttonMedewerker{
+    font-size: 30px;
+    height: 99px;
+    width: 180px;
+    text-decoration: none;
+}
+#buttonKlant {
+    background-color: cadetblue;
+}
+#buttonMedewerker{
+    background-color: #ffff7d;
 }
