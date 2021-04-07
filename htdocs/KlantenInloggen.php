@@ -6,14 +6,14 @@
     <title>Login als Klant</title>
 </head>
     <body>
-    <form action="" method="GET">
+    <form action="process.php" method="GET">
         <label>Gebruikersnaam
-            <input class="Search" name="username_klant" type="text">
+            <input class="Search" name="Username" type="text">
         </label><br>
         <label>Wachtwoord
-            <input class="Search" name="password_klant" type="text">
+            <input class="Search" name="Password" type="text">
         </label><br>
-        <button type="submit">submit</button>
+        <button type="submit" name="login">submit</button>
     </form>
     </body>
 </html>

@@ -20,16 +20,9 @@ catch(PDOException $e){
     die('PDO says no.');
 }
 
-$sth= $dbh->prepare('SELECT name, password from userplainpasswords where name = :name and password = :password');
-$sth->bindParam(':name', $_POST["name"], PDO::PARAM_STR, 45);
-$sth->bindParam(':surname', $_POST["surname"], PDO::PARAM_STR, 500);
+$sth= $dbh->prepare('SELECT * from bitfrost_loginsystem.clients_information');
 $sth->execute();
 $result = $sth->fetch();
 ?>
 
 <?php
-if($result){
-    echo"Welkom".$result['name'];
-}
-
-
