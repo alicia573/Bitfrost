@@ -31,10 +31,11 @@ if(isset($_POST['login'])) {
     $Username = $_POST['Username'];
     $Password = $_POST['Password'];
 
-    if (insertDetails($db, $Name, $Surname, $Address, $PostalCode, $City, $PhoneNumber, $Email, $Username, $Password)) ;
-    {
+    if(checkLogin($db,$Username,$Password)){
         $_SESSION['Username'] = $Username;
         header("Location: profile.php");
+    }else{
+        echo"De gebruikersnaam of wachtwoord zijn niet correct.";
     }
 }
 
@@ -56,4 +57,20 @@ if(isset($_POST['login'])) {
         $query->bindParam(":Username", $Username);
         $query->bindParam(":Password", $Password);
         return $query->execute();
+    }
+    function checkLogin($db,$Username,$Password){
+        $query = $db->prepare("
+        SELECT * FROM bitfrost_loginsystem.clients_information WHERE  Username=:Username AND Password=:Password
+        ");
+
+        $query->bindParam(":Username", $Username);
+        $query->bindParam(":Password", $Password);
+        return $query->execute();
+
+        if($query->rowCount() == 1){
+            return true;
+        }else{
+            return false;
+        }
+
     }
