@@ -35,7 +35,7 @@ require_once('registerConfig.php');
                 <input class="Search" name="Email" type="email" required>
             </label><br>
             <label>Gebruikersnaam
-                <input class="Search" name="Username" type="" required>
+                <input class="Search" name="Username" type="text" required>
             </label><br>
             <label>Wachtwoord
                 <input class="Search" name="Password" type="password" required>

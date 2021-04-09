@@ -8,15 +8,20 @@ if(isset($_POST['create'])) {
     $db = Config::connect();
 
 
-    $Name = $_POST['Name'];
-    $Surname = $_POST['Surname'];
-    $Address = $_POST['Address'];
-    $PostalCode = $_POST['PostalCode'];
-    $City = $_POST['City'];
-    $PhoneNumber = $_POST['PhoneNumber'];
-    $Email = $_POST['Email'];
-    $Username = $_POST['Username'];
-    $Password = $_POST['Password'];
+    $Name = sanatizeString($_POST['Name']);
+    $Surname = sanatizeString($_POST['Surname']);
+    $Address = sanatizeString($_POST['Address']);
+    $PostalCode = sanatizeString($_POST['PostalCode']);
+    $City = sanatizeString($_POST['City']);
+    $PhoneNumber = sanatizeString($_POST['PhoneNumber']);
+    $Email = sanatizeString($_POST['Email']);
+    $Username = sanatizeString($_POST['Username']);
+    $Password = sanatizePassword($_POST['Password']);
+
+    if($Name == ""|| $Surname == "" || $Address == "" || $PostalCode == ""|| $City == ""||
+        $PhoneNumber == ""|| $Email == ""|| $Username == ""|| $Password == ""){
+        return;
+    }
 
     if (insertDetails($db, $Name,$Surname, $Address, $PostalCode, $City, $PhoneNumber, $Email, $Username, $Password)) ;
     {
@@ -27,9 +32,9 @@ if(isset($_POST['create'])) {
 if(isset($_POST['login'])) {
     $db = Config::connect();
 
-    $Email = $_POST['Email'];
-    $Username = $_POST['Username'];
-    $Password = $_POST['Password'];
+    $Username = sanatizeString($_POST['Username']);
+    $Password = sanatizePassword($_POST['Password']);
+
 
     if(checkLogin($db,$Username,$Password)){
         $_SESSION['Username'] = $Username;
@@ -73,4 +78,18 @@ if(isset($_POST['login'])) {
             return false;
         }
 
+    }
+
+    function sanatizeString($string){
+
+        $string = strip_tags($string);
+        $string = str_replace("",$string);
+
+        return $string;
+    }
+
+    function sanatizePassword($string){
+        $string = md5($string);
+
+        return $string;
     }
