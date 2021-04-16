@@ -22,8 +22,7 @@ if(isset($_POST['create'])) {
         $PhoneNumber == ""|| $Email == ""|| $Username == ""|| $Password == ""){
         return;
     }
-
-    if (insertDetails($db, $Name,$Surname, $Address, $PostalCode, $City, $PhoneNumber, $Email, $Username, $Password)) ;
+    insertDetails($db, $Name, $Surname, $Address, $PostalCode, $City, $PhoneNumber, $Email, $Username, $Password);
     {
         $_SESSION['Username'] = $Username;
         header("Location: profile.php");
@@ -65,7 +64,7 @@ if(isset($_POST['login'])) {
     }
     function checkLogin($db,$Username,$Password){
         $query = $db->prepare("
-        SELECT * FROM bitfrost_loginsystem.clients_information WHERE  Username=:Username AND Password=:Password
+        SELECT * FROM clients_information WHERE  Username=:Username AND Password=:Password
         ");
 
         $query->bindParam(":Username", $Username);
@@ -83,13 +82,14 @@ if(isset($_POST['login'])) {
     function sanatizeString($string){
 
         $string = strip_tags($string);
-        $string = str_replace("",$string);
+
+        $string = str_replace("","", $string);
 
         return $string;
     }
 
     function sanatizePassword($string){
-        $string = md5($string);
+        $string = password_hash($string,$string);
 
         return $string;
     }

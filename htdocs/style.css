@@ -1,6 +1,9 @@
 html{
     margin:auto;
 }
+*{
+    box-sizing: border-box;
+}
 body{
     width: 80%;
     margin: auto;
@@ -15,17 +18,16 @@ input{
     width: 50%;
     padding: 12px 20px;
     margin:8px 0;
-    box-sizing: border-box;
 
 }
 form{
 }
 #wrapper{
+    padding-top: 100px;
     background-color: white;
     text-align: center;
 }
 #buttonKlant,#buttonMedewerker{
-    font-size: 30px;
     height: 99px;
     width: 180px;
     text-decoration: none;
