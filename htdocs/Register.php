@@ -1,135 +1,161 @@
 <?php
 session_start();
-require_once('');
-if(isset($_POST['create'])) {
-    if(isset($_POST['Name'],$_POST['Surname'],$_POST['City'], $_POST['PhoneNumber'],$_POST['Email'], $_POST['Password']) && !empty($_POST['Name']) && !empty($_POST['Surname']) && !empty($_POST['City']) && !empty($_POST['PhoneNumber'])&& !empty($_POST['Email']) && !empty($_POST['Password']))
+require_once('Config.php');
+
+if(isset($_POST['submit']))
+{
+    if(isset($_POST['first_name'],$_POST['last_name'],$_POST['email'],$_POST['password']) && !empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['email']) && !empty($_POST['password']))
     {
-        $Name = trim($_POST['Name']);
-        $Surname = trim($_POST['Surname']);
-        $City = trim($_POST['City']);
-        $PhoneNumber = trim($_POST['PhoneNumber']);
-        $Email = trim($_POST['Email']);
-        $Password = trim($_POST['Password']);
+        $firstName = trim($_POST['first_name']);
+        $lastName = trim($_POST['last_name']);
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
 
-        $options = array("cost" => 4);
-        $Password = password_hash($Password, PASSWORD_BCRYPT, $options);
+        $options = array("cost"=>4);
+        $hashPassword = password_hash($password,PASSWORD_BCRYPT,$options);
         $date = date('Y-m-d H:i:s');
-    }
-    if (filter_var($Email, FILTER_VALIDATE_EMAIL)) {
-        $sql = 'select * from bitfrost_loginsystem.clients_information where Email = :Email';
-        $stmt = $PDO->prepare($sql);
-        $p = ['email' => $Email];
-        $stmt->execute($p);
 
-        if ($stmt->rowCount() == 0) {
-            $sql = "insert into bitfrost_loginsystem.clients_information (Name, Surname, City, PhoneNumber, Email, Password, CreatedAt) values(:Name,:Surname,:City,:PhoneNumber,:Email,:CreatedAt)";
+        if(filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            $sql = 'select * from members where email = :email';
+            $stmt = $pdo->prepare($sql);
+            $p = ['email'=>$email];
+            $stmt->execute($p);
 
-            try {
-                $handle = $PDO->prepare($sql);
-                $params = [
-                    ':Name' => $Name,
-                    ':Surname' => $Surname,
-                    ':City' => $City,
-                    ':PhoneNumber' => $Surname,
-                    ':Email' => $Email,
-                    ':Password' => $Password,
-                    ':CreatedAt' => $date,
-                ];
+            if($stmt->rowCount() == 0)
+            {
+                $sql = "insert into members (first_name, last_name, email, `password`, created_at,updated_at) values(:fname,:lname,:email,:pass,:created_at,:updated_at)";
 
-                $handle->execute($params);
+                try{
+                    $handle = $pdo->prepare($sql);
+                    $params = [
+                        ':fname'=>$firstName,
+                        ':lname'=>$lastName,
+                        ':email'=>$email,
+                        ':pass'=>$hashPassword,
+                        ':created_at'=>$date,
+                        ':updated_at'=>$date
+                    ];
 
-                $success = 'User has been created successfully';
+                    $handle->execute($params);
 
-            } catch (PDOException $e) {
-                $errors[] = $e->getMessage();
+                    $success = 'User has been created successfully';
+
+                }
+                catch(PDOException $e){
+                    $errors[] = $e->getMessage();
+                }
             }
-        } else {
-            $valName = $Name;
-            $valSurname = $Surname;
-            $valCity = $City;
-            $valPhonenumber = $PhoneNumber;
-            $valEmail = '';
-            $valPassword = $Password;
+            else
+            {
+                $valFirstName = $firstName;
+                $valLastName = $lastName;
+                $valEmail = '';
+                $valPassword = $password;
 
-            -
-            $errors[] = 'Email address already registered';
+                $errors[] = 'Email address already registered';
+            }
         }
-    } else {
-        $errors[] = "Email address is not valid";
+        else
+        {
+            $errors[] = "Email address is not valid";
+        }
     }
-}
-else
-{
-if(!isset($_POST['Name']) || empty($_POST['Name']))
-{
-$errors[] = 'First name is required';
-}
-else
-{
-$valName = $_POST['Name'];
-}
-if(!isset($_POST['Surname']) || empty($_POST['Surname']))
-{
-$errors[] = 'Last name is required';
-}
-else
-{
-$valLastName = $_POST['Surname'];
-}
+    else
+    {
+        if(!isset($_POST['first_name']) || empty($_POST['first_name']))
+        {
+            $errors[] = 'First name is required';
+        }
+        else
+        {
+            $valFirstName = $_POST['first_name'];
+        }
+        if(!isset($_POST['last_name']) || empty($_POST['last_name']))
+        {
+            $errors[] = 'Last name is required';
+        }
+        else
+        {
+            $valLastName = $_POST['last_name'];
+        }
 
-if(!isset($_POST['Email']) || empty($_POST['Email']))
-{
-$errors[] = 'Email is required';
-}
-else
-{
-$valEmail = $_POST['Email'];
-}
+        if(!isset($_POST['email']) || empty($_POST['email']))
+        {
+            $errors[] = 'Email is required';
+        }
+        else
+        {
+            $valEmail = $_POST['email'];
+        }
 
-if(!isset($_POST['Password']) || empty($_POST['Password']))
-{
-$errors[] = 'Password is required';
-}
-else
-{
-$valPassword = $_POST['Password'];
-}
+        if(!isset($_POST['password']) || empty($_POST['password']))
+        {
+            $errors[] = 'Password is required';
+        }
+        else
+        {
+            $valPassword = $_POST['password'];
+        }
 
-}
+    }
 
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>Registreer</title>
+    <link rel="stylesheet" href="style.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
-    <body>
-        <div>
+<body class="bg-dark">
+
+<div class="container h-100">
+    <div class="row h-100 mt-5 justify-content-center align-items-center">
+        <div class="col-md-5 mt-3 pt-2 pb-5 align-self-center border bg-light">
+            <h1 class="mx-auto w-25" >Register</h1>
+            <?php
+            if(isset($errors) && count($errors) > 0)
+            {
+                foreach($errors as $error_msg)
+                {
+                    echo '<div class="alert alert-danger">'.$error_msg.'</div>';
+                }
+            }
+
+            if(isset($success))
+            {
+
+                echo '<div class="alert alert-success">'.$success.'</div>';
+            }
+            ?>
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
+                <div class="form-group">
+                    <label for="email">First Name:</label>
+                    <input type="text" name="first_name" placeholder="Enter First Name" class="form-control" value="<?php echo ($valFirstName??'')?>">
+                </div>
+                <div class="form-group">
+                    <label for="email">Last Name:</label>
+                    <input type="text" name="last_name" placeholder="Enter Last Name" class="form-control" value="<?php echo ($valLastName??'')?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" placeholder="Enter Email" class="form-control" value="<?php echo ($valEmail??'')?>">
+                </div>
+                <div class="form-group">
+                    <label for="email">Password:</label>
+                    <input type="password" name="password" placeholder="Enter Password" class="form-control" value="<?php echo ($valPassword??'')?>">
+                </div>
+
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                <p class="pt-2"> Back to <a href="KlantenInloggen.php">Login</a></p>
+
+            </form>
         </div>
-        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-            <label>Voornaam
-                <input class="Search" name="Name" type="text" required>
-            </label><br>
-            <label>Achternaam
-                <input class="Search" name="Surname" type="text" required>
-            </label><br>
-            <label>Plaats
-                <input class="Search" name="City" type="text" required>
-            </label><br>
-            <label>Telefoonnummer
-                <input class="Search" name="PhoneNumber" type="text" required>
-            </label><br>
-            <label>Email
-                <input class="Search" name="Email" type="email" required>
-            </label><br>
-            <label>Wachtwoord
-                <input class="Search" name="Password" type="password" required>
-            </label><br>
-            <input type="submit" name="create" value="Submit">
-        </form>
-    </body>
+    </div>
+</div>
+</body>
 </html>
