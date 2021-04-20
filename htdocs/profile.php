@@ -1,7 +1,12 @@
 <?php
- session_start();
+session_start();
 
- include_once("registerConfig.php");
+if(!$_SESSION['id']){
+    header('location:KlantenInloggen.php');
+}
 
- echo "Welkom " . $_SESSION['Username'];
- echo "<a href='Logout.php'>Uitloggen</a>";
+
+?>
+
+<h1>Welcome <?php echo ucfirst($_SESSION['first_name']); ?></h1>
+<a href="Logout.php?logout=true">Logout</a>
