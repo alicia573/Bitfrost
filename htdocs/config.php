@@ -1,20 +1,10 @@
-
 <?php
-
-$host= 'localhost';
-$dbname='bitfrost_loginsystem';
-$user = 'root';
-$password = 'alicia573';
-$dsn='';
-try
-{
-    $dsn = 'mysql:host='.$host.';dbname='.$dbname;
-    $pdo = new PDO($dsn,$user,$password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+define('USER', 'root');
+define('PASSWORD', '');
+define('HOST', 'localhost');
+define('DATABASE', 'test');
+try {
+$connection = new PDO("mysql:host=".HOST.";dbname=".DATABASE, USER, PASSWORD);
+} catch (PDOException $e) {
+exit("Error: " . $e->getMessage());
 }
-catch(PDOException $e)
-{
-    echo "PDO error".$e->getMessage();
-    die();
-}
-?>

@@ -1,8 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION)){
-    session_destroy();
-    header('location:KlantenInloggen.php');
-    exit();
-}
+session_destroy();
+
+header("location:index2.html");
 ?>

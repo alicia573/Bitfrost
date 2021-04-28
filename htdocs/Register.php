@@ -1,23 +1,4 @@
-<?php
-$db_server = "localhost";
-$db_username = "root";
-$db_password = "";
-$db_database = "registration_pdo";
 
-$voornaam=$_POST['voornaam'];
-$last_name=$_POST['achternaam'];
-$user_name=$_POST['user_name'];
-$password1=$_POST['password'];
-
-$conn = new PDO("mysql:host=$db_server;dbname=$db_database", $db_username, $db_password);
-
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$sql = "INSERT INTO  (first_name, last_name, user_name, password)
-VALUES ('$first_name', '$last_name', '$user_name', '$password1')";
-
-$conn->exec($sql);
-echo "<script>alert('Account successfully added!'); window.location='index.php'</script>";
-?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -27,47 +8,55 @@ echo "<script>alert('Account successfully added!'); window.location='index.php'<
     <body>
         <h2>Maak een account aan</h2>
         <h4>Vul deze formulier in om een account aan te maken.</h4>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-
+        <form action="clients_config.php" method="post">
           <div>
               <label>Voornaam
-                <input type="text" name="voornaam" required>
+                <input type="text" name="voornaam" class="text-box" required>
              </label>
           </div>
             <div>
                 <label>Achternaam
-                    <input type="text" name="achternaam" required>
+                    <input type="text" name="achternaam" class="text-box" required>
                 </label>
             </div>
             <div>
                 <label>Stad
-                    <input type="text" name="stad" required>
+                    <input type="text" name="stad" class="text-box" required>
             </label>
             </div>
             <div>
                 <label>Adres
-                    <input type="text" name="adres" required>
+                    <input type="text" name="adres" class="text-box" required>
                 </label>
             </div>
             <div>
                 <label>Telefoonnummer
-                    <input type="tel" name="telefoonnummer" required>
+                    <input type="tel" name="telefoonnummer" class="text-box" required>
                 </label>
             </div>
             <div>
                 <label>Email
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" class="text-box" required>
                 </label>
             </div>
             <div>
             <label>Wachtwoord
-                <input type="password" name="wachtwoord" required>
+                <input type="password" name="wachtwoord" class="text-box" required>
             </label>
             </div>
             <div>
                 <button type="submit" name="submit" >Verstuur</button>
             </div>
         </form>
-
+        <script type="application/javascript" for="form">
+            function firstCap(str){
+                var returnVar='';
+                var strSplit=str.split(' ');
+                for(var i=0;i<strSplit.length;i++){
+                    returnVar=returnVar+strSplit[i].substring(0,1).toUpperCase()+strSplit[i].substring(1).toLowerCase() +' ';
+                }
+                return returnVar
+            }
+        </script>
     </body>
 </html>

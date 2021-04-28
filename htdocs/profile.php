@@ -1,12 +1,24 @@
-<?php
-session_start();
-
-if(!$_SESSION['id']){
-    header('location:KlantenInloggen.php');
+<?php  session_start();
+if(empty($_SESSION['email']))
+{
+    header("location:index2.html");
 }
-
 
 ?>
 
-<h1>Welcome <?php echo ucfirst($_SESSION['first_name']); ?></h1>
-<a href="Logout.php?logout=true">Logout</a>
+Welkom <?php echo $_SESSION['voornaam']; ?>
+
+<a href="Logout.php">Logout</a>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Home</title>
+    </head>
+    <body>
+        <div id="wrapper">
+
+        </div>
+    </body>
+</html>
