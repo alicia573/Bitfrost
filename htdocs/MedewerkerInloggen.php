@@ -1,10 +1,10 @@
 <?php
-session_start();
-$host = "localhost";
-$db_user = "root";
-$db_pass = "alicia573";
-$dbname = "bitfrost_loginsystem";
-$error_message = "";
+    session_start();
+    $host = "localhost";
+    $db_user = "root";
+    $db_pass = "alicia573";
+    $dbname = "bitfrost_loginsystem";
+    $error_message = "";
 try
 {
     $connect = new PDO("mysql:host=$host; dbname=$dbname", $db_user, $db_pass);
@@ -13,7 +13,7 @@ try
     {
         if(empty($_POST["username"]) || empty($_POST["wachtwoord"]))
         {
-            $error_message = '<label>Please enter your username and password</label>';
+            $error_message = '<label>Vul de je inlog gegevens in.</label>';
         }
         else
         {
@@ -29,11 +29,11 @@ try
             if($count > 0)
             {
                 $_SESSION["username"] = $_POST["username"];
-                header("location:success.php");
+                header("location:MedewerkerArea.php");
             }
             else
             {
-                $error_message = '<label>Please enter valid username and password</label>';
+                $error_message = 'Onjuiste Gegevens!';
             }
         }
     }
@@ -45,20 +45,26 @@ catch(PDOException $error)
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>Login als Mederwerker</title>
-</head>
-<body>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-    <label>Gebruikersnaam
-        <input class="text-box" name="username" type="text">
-    </label><br>
-    <label>Wachtwoord
-        <input class="text-box" name="wachtwoord" type="password">
-    </label><br>
-    <button type="submit" name="login">submit</button>
-</form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Login als Mederwerker</title>
+    </head>
+    <body>
+    <?php
+    if(isset($error_message))
+    {
+        echo '<label class="text-danger">'.$error_message.'</label>';
+    }
+    ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <label>Gebruikersnaam
+                <input class="text-box" name="username" type="text">
+            </label><br>
+            <label>Wachtwoord
+                <input class="text-box" name="wachtwoord" type="password">
+            </label><br>
+            <button type="submit" name="login">submit</button>
+        </form>
+    </body>
 </html>

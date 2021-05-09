@@ -23,15 +23,12 @@ input{
 form{
 }
 #wrapper{
-    padding-top: 100px;
+
     background-color: white;
     text-align: center;
-}
-#buttonKlant,#buttonMedewerker{
-    height: 99px;
-    width: 180px;
     text-decoration: none;
 }
+
 #buttonKlant {
     background-color: cadetblue;
 }
@@ -48,7 +45,7 @@ form{
     border-radius: 4px;
     box-sizing: border-box;
 }
-#buttonKlant,#buttonMedewerker,#buttonLogin,#buttonRegister{
+#buttonKlant,#buttonMedewerker,#buttonLogin,#buttonRegister,#buttonPost,#buttonClientsInformation{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

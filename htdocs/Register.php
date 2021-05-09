@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="style.css" ">
     </head>
     <body>
+
         <h2>Maak een account aan</h2>
         <h4>Vul deze formulier in om een account aan te maken.</h4>
         <form action="clients_config.php" method="post">
