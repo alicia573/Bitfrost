@@ -1,3 +1,13 @@
+<?php
+include ('config.php');
+    if(isset($_POST['submit'])){
+        $countfiles = count($_FILES['bestand']['name']);
+
+        $query = 'INSERT INTO files(titel, onderwerp, tekst, bestand) 
+        values (?,?)' ;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +17,7 @@
 </head>
 <body>
 <div id="wrapper">
-    <form method="post" action="postToClientArea.php" enctype="multipart/form-data">
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
         <label>Titel:
             <input type="text" name="titel" class="text-box">
         </label>
@@ -18,9 +28,9 @@
             <input type="text" name="tekst" class="text-box">
         </label>
         <label>Bestanden:
-            <input type="file" name="bestand" >
+            <input type="file" name="bestand[]" multiple>
         </label><br>
-        <button name="post" type="submit">Post</button>
+        <button name="submit" type="submit" value="upload">Post</button>
     </form>
 </div>
 </body>

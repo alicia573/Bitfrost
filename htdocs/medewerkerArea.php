@@ -25,7 +25,7 @@
             }
             ?>
             <button id="buttonPost"><a href="test/postToClientArea.php">Post informatie voor klanten.</a></button>
-            <button id="buttonClientsInformation"><a href="clientsInformation.php">Klanten gegevens</a></button>
+            <button id="buttonClientsInformation"><a href="test/clientsInformation.php">Klanten gegevens</a></button>
 
         </div>
     </body>
