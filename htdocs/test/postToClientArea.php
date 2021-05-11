@@ -4,7 +4,7 @@ include ('config.php');
         $countfiles = count($_FILES['bestand']['name']);
 
         $query = 'INSERT INTO files(titel, onderwerp, tekst, bestand) 
-        values (?,?)' ;
+        values (?,?,?,?)' ;
     }
 ?>
 
