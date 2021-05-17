@@ -19,6 +19,41 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
     <body>
         <div id="wrapper">
 
+            <?php
+            session_start();
+            $host = "localhost";
+            $db_user = "root";
+            $db_pass = "alicia573";
+            $dbname = "bitfrost_loginsystem";
+
+            try {
+                $connect = new PDO("mysql:host=$host; dbname=$dbname", $db_user, $db_pass);
+                $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+            }catch(PDOException $e)
+                {
+                    die('unable to connect');
+                 }
+
+            //query for selecting database table
+            $results = $connect->prepare("SELECT * FROM files ORDER BY ID");
+            $results->execute();
+            // this while statement displays rows of database table
+            while($row=$results->fetch(PDO::FETCH_ASSOC))
+            {
+                extract($row);
+                ?>
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                        <h4><?php echo $row['titel'],['ondewerp'],['tekst']; ?></h4>
+
+                        <img src="htdocs/Images/<?php echo $row['bestand'] ?>" class="img-rounded" alt="image" style="width:200px" height="200px;">
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </body>
 </html>

@@ -49,15 +49,6 @@
                 <button type="submit" name="submit" >Verstuur</button>
             </div>
         </form>
-        <script type="application/javascript" for="form">
-            function firstCap(str){
-                var returnVar='';
-                var strSplit=str.split(' ');
-                for(var i=0;i<strSplit.length;i++){
-                    returnVar=returnVar+strSplit[i].substring(0,1).toUpperCase()+strSplit[i].substring(1).toLowerCase() +' ';
-                }
-                return returnVar
-            }
-        </script>
+
     </body>
 </html>
