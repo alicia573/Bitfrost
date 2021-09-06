@@ -17,10 +17,9 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
         <title>Home</title>
     </head>
     <body>
-        <div id="wrapper">
-
+    <h1 id="Dashboard">Dashboard</h1><br>
+    <div id="wrapper">
             <?php
-            session_start();
             $host = "localhost";
             $db_user = "root";
             $db_pass = "alicia573";
@@ -36,21 +35,19 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
                     die('unable to connect');
                  }
 
-            //query for selecting database table
             $results = $connect->prepare("SELECT * FROM files ORDER BY ID");
             $results->execute();
-            // this while statement displays rows of database table
             while($row=$results->fetch(PDO::FETCH_ASSOC))
             {
                 extract($row);
                 ?>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <h4><?php echo $row['titel'],['ondewerp'],['tekst']; ?></h4>
 
-                        <img src="htdocs/Images/<?php echo $row['bestand'] ?>" class="img-rounded" alt="image" style="width:200px" height="200px;">
-                    </div>
-                </div>
+                <h4><?php echo $row['titel']; ?></h4>
+                <h4><?php echo $row['ondewerp']; ?></h4>
+                <h4><?php echo $row['tekst']; ?></h4>
+
+                <img src="htdocs/Images/<?php echo $row['bestand'] ?>" class="img-rounded" alt="image" style="width:200px" height="200px;">
+
                 <?php
             }
             ?>
