@@ -1,10 +1,6 @@
 <?php
-    session_start();
-    $host = "localhost";
-    $db_user = "root";
-    $db_pass = "";
-    $dbname = "bitfrost_loginsystem";
-    $error_message = "";
+session_start();
+  include ('test/config.php');
 try
 {
     $connect = new PDO("mysql:host=$host; dbname=$dbname", $db_user, $db_pass);

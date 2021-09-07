@@ -2,7 +2,7 @@
 session_start();
 $host = "localhost";
 $db_user = "root";
-$db_pass = "alicia573";
+$db_pass = "root";
 $dbname = "bitfrost_loginsystem";
 
 try {

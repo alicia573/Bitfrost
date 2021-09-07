@@ -1,20 +1,6 @@
 <?php
-$host = "localhost";
-$db_user = "root";
-$db_pass = "alicia573";
-$dbname = "bitfrost_loginsystem";
-
-try {
-    $connect = new PDO("mysql:host=$host; dbname=$dbname", $db_user, $db_pass);
-    $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-}catch(PDOException $e)
-{
-    die('unable to connect');
-}
-
-
+session_start();
+include ('config.php');
     if(isset($_POST['submit'])) {
         $message="yes";
         $titel = $_POST['titel'];
@@ -45,6 +31,21 @@ try {
     <title>Artikelen sturen Dashboard</title>
 </head>
 <body>
+<?php
+//Login Success.php
+session_start();
+if(isset($_SESSION["username"]))
+{
+    echo '<h2>Medewerker Area</h2>';
+    echo '<h4>Welcome - '.$_SESSION["username"].'</h4>';
+}
+else
+{
+    header("location:../logout.php");
+    echo'error';
+
+}
+?>
 <div id="">
     <form id="article-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
         <label >Titel:

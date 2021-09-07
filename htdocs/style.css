@@ -70,3 +70,20 @@ form{
     text-align: center;
     padding: 5%;
 }
+/*..........................clients_information.............................*/
+#search{
+    float: right;
+    margin: 20px;
+    border-radius: 10px;
+    background: rgb(173 216 230);
+}
+
+#search_text{
+    float: left;
+    font-size: 25px;
+}
+#search_column{
+    width: 50%;
+    text-align: center;
+    margin: 100px;
+}
