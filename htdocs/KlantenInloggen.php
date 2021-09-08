@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Login</title>
@@ -17,6 +18,7 @@
         </label>
         <button type="submit" name="login">Login</button>
     </form>
+    <p>Heb je nog geen account dan kun je<a href="Register.php" style="text-decoration: none; color: blue;"> registreren.</a></p>
 </div>
 </body>
 </html>

@@ -18,22 +18,31 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
     </head>
     <body>
     <h1 id="Dashboard">Dashboard</h1><br>
-    <div id="wrapper">
+    <div id="wrapper_client_page">
             <?php
             include ('test/config.php');
             $results = $connect->prepare("SELECT * FROM files ORDER BY ID");
             $results->execute();
-            while($row=$results->fetch(PDO::FETCH_ASSOC))
+            while($row = $results->fetch(PDO::FETCH_ASSOC))
             {
                 extract($row);
                 ?>
+            <div id="Article">
+                <h1>Titel: <?php echo $row['titel']; ?></h1>
+                <h4 id="">Onderwerp: <?php echo $row['onderwerp']; ?></h4>
+                <article id="article_text">Tekst:<?php echo $row['tekst']; ?></article>
+                <?php
+                $content = $row['bestand'];
+                if($content != ''){
+                ?>
+                <img src="Images/<?php echo $row['bestand'] ?>" id="article_image" alt="image" style="width:200px" height="200px;">
+            <?php } else{
+                    readfile('');
 
-                <h4><?php echo $row['titel']; ?></h4>
-                <h4><?php echo $row['ondewerp']; ?></h4>
-                <h4><?php echo $row['tekst']; ?></h4>
+                }
+                ?>
 
-                <img src="htdocs/Images/<?php echo $row['bestand'] ?>" class="img-rounded" alt="image" style="width:200px" height="200px;">
-
+            </div>
                 <?php
             }
             ?>

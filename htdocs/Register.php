@@ -31,6 +31,11 @@
                 </label>
             </div>
             <div>
+                <label>Postcode
+                    <input type="text" name="postcode" class="text-box" required>
+                </label>
+            </div>
+            <div>
                 <label>Telefoonnummer
                     <input type="tel" name="telefoonnummer" class="text-box" required>
                 </label>
@@ -49,6 +54,7 @@
                 <button type="submit" name="submit" >Verstuur</button>
             </div>
         </form>
+        <p>Heb je al een account dan kun je<a href="KlantenInloggen.php" style="text-decoration: none; color: blue;"> inloggen.</a></p>
 
     </body>
 </html>
