@@ -5,11 +5,19 @@ html{
     box-sizing: border-box;
 }
 body{
-    width: 80%;
-    margin: auto;
     background-color: #95e0a0;
-
+    margin: 0;
 }
+footer{
+    height: 50px;
+    margin-top: 50px;
+    text-align: center;
+    background-color: mediumpurple;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
 #banner{
     width: 65%;
     margin-top: -5%;
@@ -20,12 +28,12 @@ input{
     margin:8px 0;
 
 }
-form{
+#register_form{
+    width: 50%;
 }
 #wrapper{
-    background-color: white;
-    text-align: center;
-    text-decoration: none;
+    width: 80%;
+    margin: auto;
 }
 
 #buttonKlant {
@@ -44,13 +52,16 @@ form{
     border-radius: 4px;
 }
 #buttonKlant,#buttonMedewerker,#buttonLogin,#buttonRegister,#buttonPost,#buttonClientsInformation{
+
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(0 0 0);
     border-radius: 4px;
     box-sizing: border-box;
+    text-decoration: none;
+    color: rgb(0 0 0);
 }
 #article-form{
     height: 100%;
@@ -71,31 +82,38 @@ form{
 }
 /*..........................clients_information.............................*/
 #search{
-    float: right;
-    margin: 20px;
+    margin-top: -5px;
     border-radius: 10px;
     background: rgb(173 216 230);
+    width: 70%;
+    border: 1px solid rgb(0 0 0 / 0%);
 }
-
 #search_text{
     float: left;
     font-size: 25px;
 }
 #search_column{
     width: 50%;
-    text-align: center;
     margin-top: 100px;
     padding-bottom: 100px;
 }
-
+#buttonSearch{
+    padding: 12px 20px;
+    margin-top: -5px;
+    background: rgb(173 216 230);
+    border: 1px solid rgb(0 0 0 / 0%);
+}
 #table{
     border: 1px solid rgb(0 0 0);
     width: 100%;
     margin-top: 100px;
+    margin-bottom: 150px;
 }
 /*.............................................client_homepage......................*/
 #wrapper_client_page{
     text-decoration: none;
+    width: 80%;
+    margin: auto;
 }
 #Article{
     background-color: white;

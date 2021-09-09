@@ -6,10 +6,10 @@
         <link rel="stylesheet" href="style.css" ">
     </head>
     <body>
-
+    <div id="wrapper">
         <h2>Maak een account aan</h2>
         <h4>Vul deze formulier in om een account aan te maken.</h4>
-        <form action="clients_config.php" method="post">
+        <form action="clients_config.php" method="post" id="register_form">
           <div>
               <label>Voornaam
                 <input type="text" name="voornaam" class="text-box" required>
@@ -55,6 +55,10 @@
             </div>
         </form>
         <p>Heb je al een account dan kun je<a href="KlantenInloggen.php" style="text-decoration: none; color: blue;"> inloggen.</a></p>
-
+    </div>
+    <footer style="bottom: auto">
+        <p>&copy; Copyright 2021</p>
+    </footer>
     </body>
+
 </html>

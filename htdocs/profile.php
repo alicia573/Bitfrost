@@ -17,8 +17,8 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
         <title>Home</title>
     </head>
     <body>
-    <h1 id="Dashboard">Dashboard</h1><br>
     <div id="wrapper_client_page">
+    <h1 id="Dashboard">Dashboard</h1><br>
             <?php
             include ('test/config.php');
             $results = $connect->prepare("SELECT * FROM files ORDER BY ID");
@@ -47,5 +47,8 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
             }
             ?>
         </div>
+    <footer style="bottom: auto">
+        <p>&copy; Copyright 2021</p>
+    </footer>
     </body>
 </html>

@@ -47,12 +47,14 @@ catch(PDOException $error)
         <title>Login als Mederwerker</title>
     </head>
     <body>
+    <div id="wrapper">
     <?php
     if(isset($error_message))
     {
         echo '<label class="text-danger">'.$error_message.'</label>';
     }
     ?>
+        <h2>Medewerker Login</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <label>Gebruikersnaam
                 <input class="text-box" name="username" type="text">
@@ -62,5 +64,9 @@ catch(PDOException $error)
             </label><br>
             <button type="submit" name="login">submit</button>
         </form>
+    </div>
+    <footer>
+        <p>&copy; Copyright 2021</p>
+    </footer>
     </body>
 </html>

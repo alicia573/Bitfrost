@@ -1,40 +1,40 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../style.css">
-    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <title>Klanten info</title>
 </head>
 
 
 <body>
-<?php
-session_start();
-if(isset($_SESSION["username"]))
-{
-    echo '<h2>Medewerker Area</h2>';
-    echo '<h4>Welcome - '.$_SESSION["username"].'</h4>';
-}
-else
-{
-    header("location:../logout.php");
-    echo'error';
-}
-ini_set('display_errors', 'On');
-error_reporting(E_ALL);
-include ('config.php');
-$results = $connect->prepare("SELECT * FROM clients_information ORDER BY ID");
-$results->execute();
-while($row = $results->fetch(PDO::FETCH_ASSOC)) {
-    extract($row);
-}
-?>   <div id="search_column">
-       <p id="search_text">Search: </p>
-    <label for="search">
-        <input id="search" type="search" placeholder="Search.." value="" onclick="search_func(e)">
-    </label>
-   </div>
+<div id="wrapper">
+    <?php
+    session_start();
+    if(isset($_SESSION["username"]))
+    {
+        echo '<h2>Medewerker Area</h2>';
+        echo '<h4>Welcome - '.$_SESSION["username"].'</h4>';
+    }
+    else
+    {
+        header("location:../logout.php");
+        echo'error';
+    }
+    ini_set('display_errors', 'On');
+    error_reporting(E_ALL);
+    ?>
 
+    <form id="search_column" action="" method="get">
+    <label for="search" id="search_text">Search
+        <input onkeyup="searchFunc()" id="search" name="search" type="text" placeholder="Search.." value="" onclick="search_func(e)">
+    </label>
+    </form>
 
     <div id="table_clients">
+        <?php
+        include ('config.php');
+        ?>
         <table id="table">
             <tr id="table_">
                 <th>ID</th>
@@ -45,23 +45,29 @@ while($row = $results->fetch(PDO::FETCH_ASSOC)) {
                 <th>Postcode</th>
                 <th>Telefoonnummer</th>
                 <th>Email</th>
-                <th>Wachtwoord</th>
-                <th>Time_stamp</th>
             </tr>
-            <tr>
-                <td><?php echo $row['ID']; ?></td>
-                <td><?php echo $row['voornaam']; ?></td>
-                <td><?php echo $row['achternaam']; ?></td>
-                <td><?php echo $row['stad']; ?></td>
-                <td><?php echo $row['adres']; ?></td>
-                <td><?php echo $row['postcode']; ?></td>
-                <td><?php echo $row['telefoonnummer']; ?></td>
-                <td><?php echo $row['email']; ?></td>
-                <td><?php echo $row['wachtwoord']; ?></td>
-                <td><?php echo $row['time_stamp']; ?></td>
-            </tr>
+
+            <?php
+                $results = $connect->prepare("SELECT * FROM clients_information ORDER BY ID");
+                $results->execute();
+                while($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                extract($row);
+            ?>
+            <tbody id="table_info">
+                <tr >
+                    <td><?php echo $row['ID']; ?></td>
+                    <td><?php echo $row['voornaam']; ?></td>
+                    <td><?php echo $row['achternaam']; ?></td>
+                    <td><?php echo $row['stad']; ?></td>
+                    <td><?php echo $row['adres']; ?></td>
+                    <td><?php echo $row['postcode']; ?></td>
+                    <td><?php echo $row['telefoonnummer']; ?></td>
+                    <td><?php echo $row['email']; }?></td>
+                </tr>
+            </tbody>
         </table>
     </div>
+</div>
 </body>
     <script>
         function search_func(e){
@@ -72,6 +78,24 @@ while($row = $results->fetch(PDO::FETCH_ASSOC)) {
                 return false;
             }
             return true;
+        }
+        function searchFunc() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search")
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.document.getElementsByTagName("tr");
+            for(i = 0; i < tr.length; i++){
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td){
+                    txtValue = td.textContent || td.innerText;
+                    if(txtValue.toUpperCase().indexOf(filter) > -1){
+                        tr[i].style.display = "";
+                    }else{
+                        tr[i].style.display = 'none';
+                    }
+                }
+            }
         }
     </script>
 </html>

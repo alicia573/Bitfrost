@@ -31,6 +31,7 @@ include ('config.php');
     <title>Artikelen sturen Dashboard</title>
 </head>
 <body>
+<div id="wrapper">
 <?php
 //Login Success.php
 session_start();
@@ -46,7 +47,6 @@ else
 
 }
 ?>
-<div id="">
     <form id="article-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
         <label >Titel:
             <input type="text" name="titel" class="text-box" required>
