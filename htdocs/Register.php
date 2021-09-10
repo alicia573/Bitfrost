@@ -55,6 +55,7 @@
             </div>
         </form>
         <p>Heb je al een account dan kun je<a href="KlantenInloggen.php" style="text-decoration: none; color: blue;"> inloggen.</a></p>
+        <img src="">
     </div>
     <footer style="bottom: auto">
         <p>&copy; Copyright 2021</p>
