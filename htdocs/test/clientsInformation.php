@@ -21,8 +21,7 @@
         header("location:../logout.php");
         echo'error';
     }
-    ini_set('display_errors', 'On');
-    error_reporting(E_ALL);
+
     ?>
 
     <form id="search_column" action="" method="get">
