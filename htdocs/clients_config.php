@@ -14,10 +14,9 @@ try{
 
         //$hashPassword = password_hash($wachtwoord,PASSWORD_BCRYPT);
 
-
         $insert = $con->prepare("INSERT INTO bitfrost_loginsystem.clients_information
-    (voornaam,achternaam,stad,adres,postcode,telefoonnummer,email,wachtwoord)
-    values(:voornaam,:achternaam,:stad,:adres,:postcode,:telefoonnummer,:email,:wachtwoord)");
+        (voornaam,achternaam,stad,adres,postcode,telefoonnummer,email,wachtwoord)
+        values(:voornaam,:achternaam,:stad,:adres,:postcode,:telefoonnummer,:email,:wachtwoord)");
         $insert->bindParam(':voornaam',$voornaam);
         $insert->bindParam(':achternaam',$achternaam);
         $insert->bindParam(':stad',$stad);
