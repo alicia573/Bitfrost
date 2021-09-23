@@ -2,5 +2,5 @@
 session_start();
 session_destroy();
 
-header("location:index2.html");
+header("location:Index.html");
 ?>

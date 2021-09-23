@@ -1,8 +1,11 @@
 <?php
 session_start();
-try{
-    $con = new PDO ("mysql:host=localhost;dbname=bitfrost_loginsystem","root","root");
+include ('test/config.php');
+
     if(isset($_POST['submit'])){
+        $con = new PDO("mysql:host=$host; dbname=$dbname", $db_user, $db_pass);
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         $voornaam = $_POST['voornaam'];
         $achternaam = $_POST['achternaam'];
         $stad = $_POST['stad'];
@@ -12,7 +15,7 @@ try{
         $email = $_POST['email'];
         $wachtwoord = $_POST['wachtwoord'];
 
-        //$hashPassword = password_hash($wachtwoord,PASSWORD_BCRYPT);
+        $wachtwoord = password_hash($wachtwoord,PASSWORD_BCRYPT,array("cost" => 12));
 
         $insert = $con->prepare("INSERT INTO bitfrost_loginsystem.clients_information
         (voornaam,achternaam,stad,adres,postcode,telefoonnummer,email,wachtwoord)
@@ -25,8 +28,8 @@ try{
         $insert->bindParam(':telefoonnummer',$telefoonnummer);
         $insert->bindParam(':email',$email);
         $insert->bindParam(':wachtwoord',$wachtwoord);
-        $execute = $insert->execute();
-        if($insert->execute()){
+        $insert->execute();
+        if ($insert->execute()){
             echo"failed";
         }else {
             echo "<p id='Registratie'>De Registratie is gelukt, je kan nu <a href='KlantenInloggen.php'>Inloggen.</a></p>";
@@ -50,10 +53,4 @@ try{
             header("location:profile.php?action=joined");
         }
     }
-}
-catch(PDOException $e)
-{
-    echo "error".$e->getMessage();
-}
-
 ?>
