@@ -38,7 +38,6 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
                 <img src="Images/<?php echo $row['bestand'] ?>" id="article_image" alt="image" style="width:200px" height="200px;">
             <?php } else{
                     readfile('');
-
                 }
                 ?>
 
