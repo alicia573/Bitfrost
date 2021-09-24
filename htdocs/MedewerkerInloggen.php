@@ -5,6 +5,7 @@ try
 {
     $connect = new PDO("mysql:host=$host; dbname=$dbname", $db_user, $db_pass);
     $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     if(isset($_POST["login"]))
     {
         if(empty($_POST["username"]) || empty($_POST["wachtwoord"]))
