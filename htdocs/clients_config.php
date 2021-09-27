@@ -34,7 +34,8 @@ include ('test/config.php');
         }else {
             echo "<p id='Registratie'>De Registratie is gelukt, je kan nu <a href='KlantenInloggen.php'>Inloggen.</a></p>";
         }
-    }elseif(isset($_POST['login'])){
+    }
+    if(isset($_POST['login'])){
         $email = $_POST['email'];
         $wachtwoord = $_POST['wachtwoord'];
 
