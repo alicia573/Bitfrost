@@ -1,6 +1,6 @@
 # Bitfrost
 
-## Project goal: Werken op afstand zodat je alles kan doen thuis inplaats van om op werk te komen.
+## Project goal: Werken op afstand zodat je alles thuis kan doeninplaats van om op werk te komen.
 
 ## Scope:
 Features:
