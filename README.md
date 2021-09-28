@@ -1,7 +1,6 @@
 # Bitfrost
 
-## Project goal:
-## Secondary goal:
+## Project goal: Werken op afstand zodat je alles kan doen thuis inplaats van om op werk te komen.
 
 ## Scope:
 Features:
