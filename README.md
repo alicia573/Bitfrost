@@ -5,13 +5,13 @@
 
 ##Scope:
 Features:
-*Login pagina
-*Registreer pagina
-*Medewerker pagina
-*Zoek pagina van klanten informatie
-*Artikelen upload voor de klanten
-*Searchbar
-*Admin pagina
+* Login pagina
+* Registreer pagina
+* Medewerker pagina
+* Zoek pagina van klanten informatie
+* Artikelen upload voor de klanten
+* Searchbar
+* Admin pagina
 
 
 ##Milestones
