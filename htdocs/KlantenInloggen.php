@@ -10,7 +10,7 @@
 <div id="wrapper">
     <div class="login">
         <h1>Login</h1>
-        <form action="clients_config.php" method="post">
+        <form action="clients_config_login.php" method="post">
             <label>Email
                 <input type="email" name="email" class="text-box" >
             </label>

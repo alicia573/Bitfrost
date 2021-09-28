@@ -1,10 +1,10 @@
 <?php
 session_start();
 include ('test/config.php');
+$connect = new PDO("mysql:host=$host; dbname=$dbname", $db_user, $db_pass);
+$connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if(isset($_POST['submit'])){
-        $con = new PDO("mysql:host=$host; dbname=$dbname", $db_user, $db_pass);
-        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $voornaam = $_POST['voornaam'];
         $achternaam = $_POST['achternaam'];
@@ -14,10 +14,9 @@ include ('test/config.php');
         $telefoonnummer = $_POST['telefoonnummer'];
         $email = $_POST['email'];
         $wachtwoord = $_POST['wachtwoord'];
-
         $wachtwoord = password_hash($wachtwoord,PASSWORD_BCRYPT,array("cost" => 12));
 
-        $insert = $con->prepare("INSERT INTO bitfrost_loginsystem.clients_information
+        $insert = $connect->prepare("INSERT INTO bitfrost_loginsystem.clients_information
         (voornaam,achternaam,stad,adres,postcode,telefoonnummer,email,wachtwoord)
         values(:voornaam,:achternaam,:stad,:adres,:postcode,:telefoonnummer,:email,:wachtwoord)");
         $insert->bindParam(':voornaam',$voornaam);
@@ -28,30 +27,29 @@ include ('test/config.php');
         $insert->bindParam(':telefoonnummer',$telefoonnummer);
         $insert->bindParam(':email',$email);
         $insert->bindParam(':wachtwoord',$wachtwoord);
-        $insert->execute();
-        if ($insert->execute()){
-            echo"failed";
-        }else {
-            echo "<p id='Registratie'>De Registratie is gelukt, je kan nu <a href='KlantenInloggen.php'>Inloggen.</a></p>";
-        }
+        $hello = $insert->execute();
+
+    }elseif($hello){
+        echo"verzonden";
+    }else{
+        echo "error";
     }
+
+
     if(isset($_POST['login'])){
         $email = $_POST['email'];
         $wachtwoord = $_POST['wachtwoord'];
 
-        $select = $con->prepare("SELECT * FROM bitfrost_loginsystem.clients_information WHERE email='$email' and wachtwoord='$wachtwoord'");
+        $select = $connect->prepare("SELECT * FROM bitfrost_loginsystem.clients_information WHERE email='$email' and wachtwoord='$wachtwoord'");
         $select->setFetchMode(PDO::FETCH_ASSOC);
         $select->execute();
-        $data=$select->fetch();
-        if($data['email']!=$email and $data['wachtwoord']!=$wachtwoord)
-        {
-            echo "invalid email or pass";
-        }
-        elseif($data['email']==$email and $data['wachtwoord']==$wachtwoord)
+        $data = $select->fetch();
+        if($data['email'] == $email and password_verify($wachtwoord, $data['wachtwoord'] ))
         {
             $_SESSION['email']=$data['email'];
             $_SESSION['voornaam']=$data['voornaam'];
             header("location:profile.php?action=joined");
         }
+
     }
 ?>
