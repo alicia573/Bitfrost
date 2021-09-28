@@ -1,11 +1,17 @@
 # Bitfrost
 
-#Project goal:
-#Secondary goal:
+##Project goal:
+##Secondary goal:
 
-#Scope:
+##Scope:
 Features:
+*Login pagina
+*Registreer pagina
+*Medewerker pagina
+*Zoek pagina van klanten informatie
+*Artikelen upload voor de klanten
+*Searchbar
+*Admin pagina
 
-Will do (these will definitely be in the final product):
 
-#Milestones
+##Milestones
