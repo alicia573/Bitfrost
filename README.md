@@ -1,9 +1,9 @@
 # Bitfrost
 
-##Project goal:
-##Secondary goal:
+## Project goal:
+## Secondary goal:
 
-##Scope:
+## Scope:
 Features:
 * Login pagina
 * Registreer pagina
@@ -14,4 +14,4 @@ Features:
 * Admin pagina
 
 
-##Milestones
+## Milestones
