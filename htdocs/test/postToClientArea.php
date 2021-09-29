@@ -6,11 +6,9 @@ include ('config.php');
         $titel = $_POST['titel'];
         $onderwerp = $_POST['onderwerp'];
         $tekst = $_POST['tekst'];
-
         $bestand = $_FILES['bestand']['name'];
 
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
-
 
         move_uploaded_file($_FILES["bestand"]["tmp_name"], "htdocs/Images/" . $_FILES["bestand"]["name"]);
         $stmt = $connect->prepare("INSERT INTO files (titel,onderwerp,tekst,bestand,upload_date) 
