@@ -14,7 +14,7 @@
             if(isset($_SESSION["username"]))
             {
                 echo '<a href="../medewerkerArea.php" style="text-decoration: none; color: black"><h2 >Medewerker Area</h2 ></a>';
-                echo '<h4>Welcome - '.$_SESSION["username"].'</h4>';
+                echo '<h4>Welcome '.$_SESSION["username"].'</h4>';
                 echo '<a href="Logout.php"><button type="button">Logout</button></a>';
             }
             else

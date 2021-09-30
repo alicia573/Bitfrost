@@ -10,24 +10,24 @@
 <body>
 <div id="wrapper">
     <?php
+    $search = $_POST['search'];
     session_start();
     if(isset($_SESSION["username"]))
     {
         echo '<a href="../medewerkerArea.php" style="text-decoration: none; color: black"><h2 >Medewerker Area</h2 ></a>';
-        echo '<h4>Welcome - '.$_SESSION["username"].'</h4>';
+        echo '<h4>Welcome  '.$_SESSION["username"].'</h4>';
     }
     else
     {
         header("location:../logout.php");
         echo'error';
     }
-    $search = $_POST['search'];
 
     ?>
 
     <form id="search_column" action="" method="POST">
     <label for="search" id="search_text">Zoeken:
-        <input id="search" name="search" type="text" placeholder="Zoek Naam" value="" onclick="search_func(e)" required>
+        <input id="search" name="search" type="text" placeholder="Zoek op naam..." value="" onclick="search_func(e)" required>
         <button id="btn-search" name="btn-search">Search</button>
     </label>
     </form>
