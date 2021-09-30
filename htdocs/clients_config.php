@@ -27,31 +27,12 @@ $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $insert->bindParam(':telefoonnummer',$telefoonnummer);
         $insert->bindParam(':email',$email);
         $insert->bindParam(':wachtwoord',$wachtwoord);
-        $insert->execute();
-
-        if($insert->execute()){
-            echo"<script type='application/json'>send</script>";
-
-        }else{
-            echo "error";
+        $send = $insert->execute();
+        if($send){
+            header("location:KlantenInloggen.php");
         }
+    }else{
+        echo"<script>alert('Niet gelukt')</script>";
     }
 
-
-    if(isset($_POST['login'])){
-        $email = $_POST['email'];
-        $wachtwoord = $_POST['wachtwoord'];
-
-        $select = $connect->prepare("SELECT * FROM bitfrost_loginsystem.clients_information WHERE email='$email' and wachtwoord='$wachtwoord'");
-        $select->setFetchMode(PDO::FETCH_ASSOC);
-        $select->execute();
-        $data = $select->fetch();
-        if($data['email'] == $email and password_verify($wachtwoord, $data['wachtwoord'] ))
-        {
-            $_SESSION['email']=$data['email'];
-            $_SESSION['voornaam']=$data['voornaam'];
-            header("location:profile.php?action=joined");
-        }
-
-    }
 ?>

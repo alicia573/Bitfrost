@@ -50,10 +50,10 @@
             </label>
             </div>
             <div>
-                <button type="submit" name="submit" >Verstuur</button>
+                <button type="submit" name="submit" id="login-btn-client">Verstuur</button>
             </div>
         </form>
-        <p>Heb je al een account dan kun je<a href="KlantenInloggen.php" style="text-decoration: none; color: blue;"> inloggen.</a></p>
+        <p>Heb je al een account dan kun je hier<a href="KlantenInloggen.php" style="text-decoration: none; color: blue;"> Inloggen.</a></p>
         <img src="">
     </div>
     <footer style="bottom: auto">

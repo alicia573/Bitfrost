@@ -15,12 +15,12 @@ if(isset($_POST["login"]))
     }
     else
     {
-        $select = $connect->prepare("SELECT * FROM bitfrost_loginsystem.clients_information WHERE email='$email' and wachtwoord='$wachtwoord'");
+        $select = $connect->prepare("SELECT * FROM bitfrost_loginsystem.clients_information WHERE email = '$email' and wachtwoord = '$wachtwoord'");
         $select->setFetchMode(PDO::FETCH_ASSOC);
         $select->execute();
         $data = $select->fetch();
 
-        $count = $data->rowCount();
+        $count = $select->rowCount();
         if($count > 0)
         {
             if($data['email'] == $email){
