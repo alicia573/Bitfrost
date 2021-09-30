@@ -21,12 +21,13 @@
         header("location:../logout.php");
         echo'error';
     }
-
+    $search = $_POST['search'];
     ?>
 
     <form id="search_column" action="" method="get">
     <label for="search" id="search_text">Search
-        <input onkeyup="searchFunc()" id="search" name="search" type="text" placeholder="Search.." value="" onclick="search_func(e)">
+        <input id="search" name="search" type="text" placeholder="Search.." value="" onclick="search_func(e)">
+        <!--<button id="search" name="btn-search">Search</button>-->
     </label>
     </form>
 
@@ -47,10 +48,9 @@
             </tr>
 
             <?php
-                $results = $connect->prepare("SELECT * FROM clients_information ORDER BY ID");
-                $results->execute();
-                while($row = $results->fetch(PDO::FETCH_ASSOC)) {
-                extract($row);
+            $results = $connect->prepare("SELECT * FROM clients_information ORDER BY `clients_information`.`stad` ASC ");
+            $results->execute();
+            while($row = $results->fetch(PDO::FETCH_ASSOC)) {extract($row);
             ?>
             <tbody id="table_info">
                 <tr >

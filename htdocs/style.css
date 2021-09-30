@@ -104,10 +104,24 @@ input{
     border: 1px solid rgb(0 0 0 / 0%);
 }
 #table{
-    border: 1px solid rgb(0 0 0);
+    border: 1px solid navajowhite;
     width: 100%;
     margin-top: 100px;
     margin-bottom: 150px;
+    border-collapse: collapse;
+    font-family: monospace;
+    text-align: left;
+    font-size: 16px;
+}
+#table th{
+    color: navajowhite ;
+    background-color: cadetblue;
+    border-right: 1px solid navajowhite;
+
+}
+#table td{
+    color: cadetblue ;
+    background: navajowhite;
 }
 /*.............................................client_homepage......................*/
 #wrapper_client_page{

@@ -27,12 +27,14 @@ $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $insert->bindParam(':telefoonnummer',$telefoonnummer);
         $insert->bindParam(':email',$email);
         $insert->bindParam(':wachtwoord',$wachtwoord);
-        $hello = $insert->execute();
+        $insert->execute();
 
-    }elseif($hello){
-        echo"verzonden";
-    }else{
-        echo "error";
+        if($insert->execute()){
+            echo"<script type='application/json'>send</script>";
+
+        }else{
+            echo "error";
+        }
     }
 
 
