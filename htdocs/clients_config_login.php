@@ -11,23 +11,21 @@ if(isset($_POST["login"]))
     $email= $_POST['email'];
     if(empty($email) || empty($wachtwoord))
     {
-        $error_message = '<label>Vul de je inlog gegevens in.</label>';
+       echo'<label>Vul de je inlog gegevens in.</label>';
     }
     else
-    {
-        $select = $connect->prepare("SELECT * FROM bitfrost_loginsystem.clients_information WHERE email = '$email' and wachtwoord = '$wachtwoord'");
-        $select->setFetchMode(PDO::FETCH_ASSOC);
+    {   $query = "SELECT * FROM clients_information WHERE email = '$email' AND wachtwoord = '$wachtwoord' ";
+        $select = $connect->prepare($query);
         $select->execute();
-        $data = $select->fetch();
+        $data = $select->fetch(PDO::FETCH_ASSOC);
 
-        $count = $select->rowCount();
-        if($count > 0)
+        if($select->rowCount() > 0)
         {
             if($data['email'] == $email){
-                if(password_verify($wachtwoord, $data['wachtwoord'])){
-                    $_SESSION['email']= $data['email'];
-                    $_SESSION['voornaam']= $data['voornaam'];
-                    header("location:profile.php?action=joined");
+                    if(password_verify($wachtwoord, $data['wachtwoord'])){
+                    $_SESSION['email']= $_POST['email'];
+                    $_SESSION['voornaam']= $_POST['voornaam'];
+                    header("location:profile.php?");
                 }else{
                     echo'Verkeerde wachtwoord';
                 }
@@ -35,7 +33,7 @@ if(isset($_POST["login"]))
         }
         else
         {
-            $error_message = 'Onjuiste Gegevens!';
+            echo'Onjuiste Gegevens!';
         }
     }
 }

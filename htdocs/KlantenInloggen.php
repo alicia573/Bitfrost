@@ -8,10 +8,11 @@
 </head>
 <body>
 <div id="wrapper">
+
     <div class="login">
         <h1>Login</h1>
         <h4>Vul deze formulier in te loggen.</h4>
-        <form action="clients_config_login.php" method="post">
+        <form action="clients_config_login.php" method="POST">
             <label>Email
                 <input type="email" name="email" class="text-box" >
             </label>
@@ -23,8 +24,6 @@
         <p>Heb je nog geen account dan kun je hier<a href="Register.php" style="text-decoration: none; color: blue;"> Registreren.</a></p>
     </div>
 </div>
-<footer>
-    <p>&copy; Copyright 2021</p>
-</footer>
+
 </body>
 </html>
