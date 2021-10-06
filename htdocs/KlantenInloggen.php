@@ -1,4 +1,13 @@
-
+<?php
+include_once "clients_config_login.php";
+if(!$select){
+?>
+<body>
+error
+</body>
+<?php
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
