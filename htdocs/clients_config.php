@@ -1,5 +1,4 @@
 <?php
-session_start();
 include ('test/config.php');
 $connect = new PDO("mysql:host=$host; dbname=$dbname", $db_user, $db_pass);
 $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -26,16 +25,15 @@ $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $insert->bindParam(':postcode', $postcode);
         $insert->bindParam(':telefoonnummer', $telefoonnummer);
         $insert->bindParam(':email', $email);
+        $insert->bindParam(':wachtwoord', $wachtwoord);
         $check = $connect->prepare( "SELECT 1 FROM clients_information WHERE email = ?");
         $user = $check->execute([$email]);
         $user = $check->fetch();
-        $insert->bindParam(':wachtwoord', $wachtwoord);
+
 
         if($user){
-            echo"U heeft al een account.";
-        }
-        elseif(strlen($wachtwoord <= 8 )) {
-           die('password should be longer then 8');
+            echo "<script>alert('Er is al een account aangemaakt met deze email');document.location='Register.php'</script>";
+
         }
         else{
            if($insert->execute()){

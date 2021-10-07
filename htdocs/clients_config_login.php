@@ -13,25 +13,28 @@ try {
         $wachtwoord = $_POST['wachtwoord'];
         $email = $_POST['email'];
 
-        if ($email == "" || $wachtwoord == "") {
-             $error_message = '<label>Vul je inlog gegevens in.</label>';
-
-        } else {
-            $query = "SELECT * FROM clients_information WHERE email = '$email'";
-            $select = $connect->prepare($query);
-            $select->execute();
-            $data = $select->fetch(PDO::FETCH_ASSOC);
-
-            if ($data && password_verify($wachtwoord, $data['wachtwoord'])) {
+        $query = "SELECT * FROM clients_information WHERE email = '$email'";
+        $select = $connect->prepare($query);
+        $data = $select->fetch(PDO::FETCH_ASSOC);
+        $check = $connect->prepare( "SELECT 1 FROM clients_information WHERE email = ?");
+        $user = $check->execute[$email];
+        $user = $check->fetch();
+        if($user){
+            echo "<script>alert('Er is nog geen account aangemaakt met deze email');document.location='KlantenInloggen.php'</script>";
+        }
+        if($select->execute()){
+            if($data && password_verify($wachtwoord, $data['wachtwoord'])) {
                 $_SESSION['email'] = $data['email'];
                 $_SESSION['voornaam'] = $data['voornaam'];
                 header("location:profile.php");
             } else {
-                 $error_message ="Onjuiste Gegevens";
+                $error_message ="Onjuiste Gegevens";
 
             }
         }
+
     }
+
 }
 catch (PDOException $error){
 
