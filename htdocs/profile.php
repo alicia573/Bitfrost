@@ -15,6 +15,7 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel = "icon" type = "image/png" href = "Images/logo.png">
         <link rel="stylesheet" href="style.css">
         <title>Home</title>
     </head>
@@ -39,7 +40,7 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
                 ?>
                 <img src="Images/<?php echo $row['bestand'] ?>" id="article_image" alt="image" style="width:200px" height="200px;">
             <?php } else{
-                    echo '';
+                    echo "";
                 }
                 ?>
 

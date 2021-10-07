@@ -25,6 +25,7 @@ include ('config.php');
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel = "icon" type = "image/png" href = "Images/logo.png">
     <link rel="stylesheet" href="../style.css">
     <title>Artikelen sturen Dashboard</title>
 </head>

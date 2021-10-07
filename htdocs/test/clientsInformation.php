@@ -1,5 +1,6 @@
 <html lang="en">
 <head>
+    <link rel = "icon" type = "image/png" href = "Images/logo.png">
     <link rel="stylesheet" href="../style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
     </script>

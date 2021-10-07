@@ -10,7 +10,7 @@ try
     {
         if(empty($_POST["username"]) || empty($_POST["wachtwoord"]))
         {
-            $error_message = '<label>Vul de je inlog gegevens in.</label>';
+            $error_message = '<label>Vul je inlog gegevens in.</label>';
         }
         else
         {
@@ -44,6 +44,7 @@ catch(PDOException $error)
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel = "icon" type = "image/png" href = "Images/logo.png">
         <link rel="stylesheet" href="style.css">
         <title>Login als Mederwerker</title>
     </head>

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <link rel = "icon" type = "image/png" href = "Images/logo.png">
         <title>Registreren</title>
         <link rel="stylesheet" href="style.css" ">
     </head>
