@@ -14,11 +14,7 @@ $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $telefoonnummer = $_POST['telefoonnummer'];
         $email = $_POST['email'];
         $wachtwoord = $_POST['wachtwoord'];
-        $wachtwoord = password_hash($wachtwoord, PASSWORD_BCRYPT, array("cost" => 8));
-        $uppercase = preg_match('@[A-Z]@',$wachtwoord );
-        $lowercase = preg_match('@[a-z]@',$wachtwoord );
-        $number = preg_match('@[0-9]@',$wachtwoord );
-        $specialChars = preg_match('@[^\w]@',$wachtwoord );
+        $wachtwoord = password_hash($wachtwoord, PASSWORD_BCRYPT, array("cost" => 12));
 
         $insert = $connect->prepare("INSERT INTO bitfrost_loginsystem.clients_information
         (voornaam,achternaam,stad,adres,postcode,telefoonnummer,email,wachtwoord)
@@ -38,25 +34,16 @@ $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         if($user){
             echo"U heeft al een account.";
         }
-       else{
-            if ($insert->execute()) {
-
-                header ("location:KlantenInloggen.php");
-            } else {
-                echo"Something went Wrong try again!";
-            }
+        elseif(strlen($wachtwoord <= 8 )) {
+           die('password should be longer then 8');
         }
-        //if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($wachtwoord) < 8  ) {
-        //    echo "Password should be longer";
-        // }else{
-        //    echo"error";
-        //}
-
-
-
-    }
-
-
-
+        else{
+           if($insert->execute()){
+               header('location:register_confirmed.html');
+           }else{
+               echo'Some kind of a error';
+           }
+         }
+        }
 
 ?>

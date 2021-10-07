@@ -13,7 +13,13 @@
     <div class="login">
         <h1>Login</h1>
         <h4>Vul deze formulier in te loggen.</h4>
-        <form action="clients_config_login.php" method="POST" onsubmit="return validateForm()" name="myForm" autocomplete="off">
+        <?php
+        include ('clients_config_login.php');
+        if(isset($error_message)){
+            echo $error_message;
+        }
+        ?>
+        <form action="clients_config_login.php" method="POST" name="myForm" autocomplete="off">
             <label>Email
                 <input type="email" name="email" class="text-box" autocomplete="off"required>
             </label>

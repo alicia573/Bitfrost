@@ -160,3 +160,23 @@ input{
 }
 #article_image{
 }
+/*............................................Registered confirmed..........................................*/
+#wrapper-sent{
+    text-decoration: none;
+    width: 90%;
+    margin: auto;
+    margin-top: 20%;
+    background-color: white;
+    font-family: Arial Nova Light,serif;
+
+}
+#sent-img{
+    margin-top: 20px;
+    width: 50%;
+}
+#sent{
+    margin: auto;
+    text-align: center;
+    display: table;
+    padding-bottom: 5%;
+}
