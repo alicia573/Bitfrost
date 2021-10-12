@@ -57,9 +57,6 @@
         <p>Heb je al een account dan kun je hier<a href="KlantenInloggen.php" style="text-decoration: none; color: blue;"> Inloggen.</a></p>
         <img src="">
     </div>
-    <footer style="bottom: auto">
-        <p>&copy; Copyright 2021</p>
-    </footer>
     </body>
 
 </html>
