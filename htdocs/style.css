@@ -95,6 +95,9 @@ input{
     text-align: center;
     padding: 5%;
 }
+#alert{
+    background-color: pink;
+}
 /*..........................clients_information.............................*/
 #search{
     margin-top: -5px;

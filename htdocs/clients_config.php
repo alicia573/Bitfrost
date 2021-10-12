@@ -1,3 +1,9 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+
 <?php
 include ('test/config.php');
 $connect = new PDO("mysql:host=$host; dbname=$dbname", $db_user, $db_pass);
@@ -32,8 +38,18 @@ $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
         if($user){
-            echo "<script>alert('Er is al een account aangemaakt met deze email');document.location='Register.php'</script>";
-
+            echo '<script type="text/javascript">
+            $(document).ready(function(){
+            
+              swal({
+                    title: "Fout",
+                    text: "Er is al een account aangemaakt met deze email",
+                    type: "failed"
+                }).then(function() {
+                    window.location = "Register.php";
+                });
+              }); 
+            </script>';
         }
         else{
            if($insert->execute()){
