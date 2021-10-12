@@ -2,7 +2,7 @@
 session_start();
 if(empty($_SESSION['email']))
 {
-    header("location:Index.html");
+    header("location:index.html");
     session_destroy();
 }
 
