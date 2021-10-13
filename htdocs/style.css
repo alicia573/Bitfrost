@@ -183,3 +183,8 @@ input{
     display: table;
     padding-bottom: 5%;
 }
+@media all and (min-width: 320px) and (max-width: 600px){
+    #wrapper {
+        background-color: lightblue;
+    }
+}
