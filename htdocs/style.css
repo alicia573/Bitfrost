@@ -39,7 +39,10 @@ input{
     width: 80%;
     margin: auto;
 }
-
+#wrapper-register{
+    width: 80%;
+    margin: auto;
+}
 #buttonKlant {
     background-color: cadetblue;
 }
@@ -193,10 +196,16 @@ input{
     #wrapper{
         margin: 0;
         position: absolute;
-        top: 65%;
+        top: 50%;
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
+    }
+    #wrapper-sent{
+        margin-top: 40%;
+    }
+    #register_form{
+        width: 100%;
     }
 }
 @media all and (min-width: 600px) and (max-width: 768px){
@@ -209,9 +218,20 @@ input{
     #wrapper{
         margin: 0;
         position: absolute;
-        top: 65%;
+        top: 50%;
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
+    }
+    #wrapper-register{
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -40%);
+    }
+    #register_form{
+        width: 100%;
     }
 }

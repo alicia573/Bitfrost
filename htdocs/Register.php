@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="style.css" ">
     </head>
     <body>
-    <div id="wrapper">
+    <div id="wrapper-register">
         <h2>Maak een account aan</h2>
         <h4>Vul deze formulier in om een account aan te maken.</h4>
         <form action="clients_config.php" method="post" id="register_form" autocomplete="off">
