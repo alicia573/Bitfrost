@@ -35,14 +35,11 @@ input{
 #register_form{
     width: 50%;
 }
-#wrapper{
+#wrapper,#wrapper-register{
     width: 80%;
     margin: auto;
 }
-#wrapper-register{
-    width: 80%;
-    margin: auto;
-}
+
 #buttonKlant {
     background-color: cadetblue;
 }
