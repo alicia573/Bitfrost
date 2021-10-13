@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel = "icon" type = "image/png" href = "Images/logo.png">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <title>Registreren</title>
         <link rel="stylesheet" href="style.css" ">
     </head>

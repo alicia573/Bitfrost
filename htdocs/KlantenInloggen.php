@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel = "icon" type = "image/png" href = "Images/logo.png">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">

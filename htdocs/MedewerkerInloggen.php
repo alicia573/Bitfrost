@@ -45,6 +45,7 @@ catch(PDOException $error)
     <head>
         <meta charset="UTF-8">
         <link rel = "icon" type = "image/png" href = "Images/logo.png">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="stylesheet" href="style.css">
         <title>Login als Mederwerker</title>
     </head>

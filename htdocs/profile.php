@@ -17,6 +17,7 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
         <meta charset="UTF-8">
         <link rel = "icon" type = "image/png" href = "Images/logo.png">
         <link rel="stylesheet" href="style.css">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <title>Home</title>
     </head>
     <body>
