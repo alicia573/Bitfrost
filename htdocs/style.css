@@ -184,7 +184,34 @@ input{
     padding-bottom: 5%;
 }
 @media all and (min-width: 320px) and (max-width: 600px){
-    #wrapper {
+    body {
         background-color: lightblue;
+    }
+    #banner{
+        font-size: 50px;
+    }
+    #wrapper{
+        margin: 0;
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+}
+@media all and (min-width: 600px) and (max-width: 768px){
+    body {
+        background-color: lightcoral;
+    }
+    #banner{
+        font-size: 100px;
+    }
+    #wrapper{
+        margin: 0;
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
 }
