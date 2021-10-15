@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
@@ -67,7 +68,7 @@ if (isset($_POST["login"])) {
     }else{
         echo '<script type="text/javascript">
                       $(document).ready(function(){
-            
+           
                       swal({
                             title: "Fout",
                             text: "Er is geen account met deze mail.",
@@ -78,5 +79,4 @@ if (isset($_POST["login"])) {
                       }); 
                     </script>';
     }
-
 }

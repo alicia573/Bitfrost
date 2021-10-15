@@ -5,11 +5,8 @@ if(empty($_SESSION['email']))
     header("location:index.html");
     session_destroy();
 }
-
 ?>
-
-Welkom <?php echo $_SESSION['voornaam']; ?>
-
+<!DOCTYPE html>
 <a href="Logout.php">Logout</a>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +19,9 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
     </head>
     <body>
     <div id="wrapper_client_page">
-    <h1 id="Dashboard">Dashboard</h1><br>
+        <p>Welkom <?php echo $_SESSION['voornaam'];?></p>
+
+        <h1 id="Dashboard">Dashboard</h1><br>
             <?php
             include ('test/config.php');
             $results = $connect->prepare("SELECT * FROM files ORDER BY ID");
@@ -30,7 +29,7 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
             while($row = $results->fetch(PDO::FETCH_ASSOC))
             {
                 extract($row);
-                ?>
+            ?>
             <div id="Article">
                 <h1>Titel: <?php echo $row['titel']; ?></h1>
                 <h4 id="">Onderwerp: <?php echo $row['onderwerp']; ?></h4>
@@ -40,13 +39,13 @@ Welkom <?php echo $_SESSION['voornaam']; ?>
                 if($content != ''){
                 ?>
                 <img src="Images/<?php echo $row['bestand'] ?>" id="article_image" alt="image" style="width:200px" height="200px;">
-            <?php } else{
+            <?php }else{
                     echo "";
-                }
-                ?>
+                   }
+            ?>
 
             </div>
-                <?php
+            <?php
             }
             ?>
         </div>
